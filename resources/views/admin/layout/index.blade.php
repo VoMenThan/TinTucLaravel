@@ -64,7 +64,7 @@
         });
     });
     </script>
-
+    <script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script>
     @yield('script')
 
 </body>

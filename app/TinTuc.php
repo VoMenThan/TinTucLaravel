@@ -15,6 +15,6 @@ class TinTuc extends Model
 
     public function comment()
     {
-    	return $this->hasMany('App\Comment', 'idTinTuc', 'id')
+    	return $this->hasMany('App\Comment', 'idTinTuc', 'id');
     }
 }

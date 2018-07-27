@@ -13,6 +13,8 @@ class TheLoaiController extends Controller
     	return view('admin.theloai.danhsach', ['theloai'=>$theloai]);
     }
 
+
+
     public function getThem()
     {
     	return view('admin.theloai.them');
@@ -25,9 +27,9 @@ class TheLoaiController extends Controller
                 'Ten' => 'required|min:3|max:100'
             ],
             [
-                'Ten.required' => 'Tên thể loại bắt buộc phải nhập',
-                'Ten.min' => 'Tên thể loại phải nhiều hơn 3 và ít hơn 100 ký tự',
-                'Ten.max' => 'Tên thể loại phải nhiều hơn 3 và ít hơn 100 ký tự'
+                'Ten.required'  => 'Tên thể loại bắt buộc phải nhập',
+                'Ten.min'       => 'Tên thể loại phải nhiều hơn 3 và ít hơn 100 ký tự',
+                'Ten.max'       => 'Tên thể loại phải nhiều hơn 3 và ít hơn 100 ký tự'
             ]
         );
 
@@ -41,6 +43,8 @@ class TheLoaiController extends Controller
 
     }
 
+
+
     public function getSua($id)
     {
         $theloai = TheLoai::find($id);
@@ -49,6 +53,32 @@ class TheLoaiController extends Controller
 
     public function postSua(Request $request, $id)
     {
-        
+        $theloai = TheLoai::find($id);
+
+        $this->validate($request, 
+            [
+                'Ten' => 'required|unique:TheLoai,Ten|min:3|max:100'
+            ], 
+            [
+                'Ten.required' => 'Bạn chưa nhập tên thể loại',
+                'Ten.unique' => 'Tên thể loại đã tồn tại',
+                'Ten.min' => 'Tên phải hơn 3 và bé hơn 100 ký tự',
+                'Ten.max' => 'Tên phải hơn 3 và bé hơn 100 ký tự'
+            ]);
+        $theloai->Ten = $request->Ten;
+        $theloai->TenKhongDau = changeTitle($request->Ten);
+        $theloai->save();
+
+        return redirect('admin/theloai/sua/'.$id)->with('thongbao', 'Sửa thành công!');
+    }
+
+
+
+    public function getXoa($id)
+    {
+        $theloai = TheLoai::find($id);
+        $theloai->delete();
+
+        return redirect('admin/theloai/danhsach')->with('thongbao', 'Xóa thành công!');
     }
 }

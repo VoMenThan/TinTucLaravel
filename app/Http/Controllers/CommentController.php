@@ -3,21 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
+use App\TinTuc;
+
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function getDanhSach()
+    public function getXoa($id,$idTinTuc)
     {
-    	return view('admin.comment.danhsach');
-    }
+    	$comment = Comment::find($id);
+        $comment->delete();
 
-    public function getSua()
-    {
-    	return view('admin.comment.sua');
+        return redirect('admin/tintuc/sua/'.$idTinTuc)->with('thongbao', 'Xóa comment thành công!');
     }
-
-    public function getThem()
+    public function postComment($id, Request $request)
     {
-    	return view('admin.comment.them');
+    	$comment = new Comment;
+    	$tintuc = TinTuc::find($id);
+    	$comment->idTinTuc = $id;
+    	$comment->idUser = Auth::user()->id;
+    	$comment->NoiDung = $request->NoiDungBinhLuan;
+    	
+    	$comment->save();
+
+    	return redirect("tintuc/$id/".$tintuc->TieuDeKhongDau.".html")->with('thongbao', 'Viết bình luận thành công!');
     }
 }

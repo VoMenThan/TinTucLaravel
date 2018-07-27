@@ -16,7 +16,7 @@
                 <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thể loai<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thể loại<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/theloai/danhsach">Danh sách</a>
@@ -24,32 +24,60 @@
                     <li>
                         <a href="admin/theloai/them">Thêm</a>
                     </li>
-                    <li>
-                        <a href="admin/theloai/sua">Sửa</a>
-                    </li>
+                   
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cube fa-fw"></i> Loại tin<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">List Product</a>
+                        <a href="admin/loaitin/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="#">Add Product</a>
+                        <a href="admin/loaitin/them">Thêm</a>
                     </li>
+                    
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+
             <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cube fa-fw"></i> Tin Tức<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">List User</a>
+                        <a href="admin/tintuc/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="#">Add User</a>
+                        <a href="admin/tintuc/them">Thêm</a>
+                    </li>
+                    
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-cube fa-fw"></i> Slider<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/slider/danhsach">Danh sách</a>
+                    </li>
+                    <li>
+                        <a href="admin/slider/them">Thêm</a>
+                    </li>
+                    
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-users fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/user/danhsach">Danh sách</a>
+                    </li>
+                    <li>
+                        <a href="admin/user/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

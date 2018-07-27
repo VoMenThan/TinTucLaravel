@@ -10,45 +10,44 @@
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
+            @if(count($errors) > 0)
+                @foreach($errors->all() as $err)
+                    <div class="alert alert-danger">
+                        {{$err}}
+                    </div>
+                @endforeach
+            @endif
+
+            @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{session('thongbao')}}
+                </div>
+            @endif
             <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="" method="POST">
+                <form action="admin/loaitin/sua/{{$loaitin->id}}" method="POST">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
-                        <label>Category Parent</label>
-                        <select class="form-control">
-                            <option value="0">Please Choose Category</option>
-                            <option value="">Tin Tức</option>
+                        <label>Thể loại</label>
+                        <select class="form-control" name="idTheLoai">
+                            @foreach($theloai as $tl)
+                            <option
+                            @if($tl->id == $loaitin->idTheLoai)
+                                {{"selected"}}
+                            @endif
+                            value="{{$tl->id}}">{{$tl->Ten}}</option>
+                            @endforeach
                         </select>
                     </div>
+
                     <div class="form-group">
-                        <label>Category Name</label>
-                        <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                        <label>Tên</label>
+                        <input class="form-control" name="Ten" placeholder="Nhập tên loại" value="{{$loaitin->Ten}}" />
                     </div>
-                    <div class="form-group">
-                        <label>Category Order</label>
-                        <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
-                    </div>
-                    <div class="form-group">
-                        <label>Category Keywords</label>
-                        <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
-                    </div>
-                    <div class="form-group">
-                        <label>Category Description</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Category Status</label>
-                        <label class="radio-inline">
-                            <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                        </label>
-                        <label class="radio-inline">
-                            <input name="rdoStatus" value="2" type="radio">Invisible
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Category Edit</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+                    
+                    <button type="submit" class="btn btn-default">Sửa</button>
+                    <button type="reset" class="btn btn-default">Làm mới</button>
                 <form>
             </div>
-        </div>
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
